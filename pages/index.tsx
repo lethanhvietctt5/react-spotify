@@ -1,10 +1,26 @@
 import Head from "next/head";
 import Image from "next/image";
+import { useEffect } from "react";
 import Main from "../components/Main/index";
 import Music from "../components/MusicPlay";
 import SideBar from "../components/SideBar";
+import { useAppDispatch, useAppSelector } from "../hooks";
+import { setToken } from "../redux/slices/auth";
+import spotify, { getToken, url_auth } from "../spotify";
 
 export default function Home() {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const _token = getToken();
+    if (_token.access_token) {
+      dispatch(setToken(_token));
+      spotify.setToken(_token.access_token);
+    } else {
+      window.location.href = url_auth;
+    }
+  }, []);
+
   return (
     <div className="w-full h-full">
       <Head>

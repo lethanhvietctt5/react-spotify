@@ -1,8 +1,18 @@
 import "../styles/globals.css";
-
 import type { AppProps } from "next/app";
+import { Provider } from "react-redux";
+import store from "../redux/store";
+import { useEffect, useState } from "react";
+import { getToken } from "../spotify";
+import { setToken } from "../redux/slices/auth";
+import { useAppDispatch } from "../hooks";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+
+  return (
+    <Provider store={store}>
+      <Component {...pageProps} />
+    </Provider>
+  );
 }
 export default MyApp;
