@@ -1,4 +1,7 @@
+import useProfile from "../../hooks/useProfile";
+
 export default function Header() {
+  const user = useProfile();
   return (
     <div className="h-14 flex justify-end items-center mr-4 p-2">
       <div className="flex h-full justify-center items-center rounded-full bg-black">
@@ -6,12 +9,12 @@ export default function Header() {
           <div className="h-full">
             <img
               className="h-full rounded-full mr-2"
-              src="/images/test.jpeg"
+              src={user?.image}
               alt=""
             />
           </div>
         </div>
-        <div className="text-white mr-2">Lê Thành Việt</div>
+        <div className="text-white mr-2">{user?.display_name}</div>
         <div className="text-white mr-4 text-xl">
           <svg width="1em" height="1em" viewBox="0 0 15 15">
             <g fill="none">

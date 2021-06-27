@@ -20,14 +20,12 @@ export default function useRecentlyTracks() {
   const token = useAppSelector((state) => state.auth.access_token);
 
   useEffect(() => {
-    console.log(spotify.access_token);
     const fetchRecentTracks = async () => {
       if (token) {
         const res = await spotify.getRecentlyPlayedTracks();
         let allRTrack: RTrack[] = [] as RTrack[];
         let singleTrack: RTrack = {} as RTrack;
         for (const track of res.items) {
-          console.log(track);
           singleTrack.id = track.track.id;
           singleTrack.href = track.track.href;
           singleTrack.duration = track.track.duration_ms;

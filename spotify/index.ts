@@ -65,6 +65,31 @@ class Spotify {
 
     return res.data;
   }
+
+  async getProfile() {
+    const res = await axios.get("https://api.spotify.com/v1/me", {
+      headers: {
+        Authorization: "Bearer " + this.access_token,
+        Accept: "application/json",
+      },
+    });
+
+    return res.data;
+  }
+
+  async getNewReleaseTracks() {
+    const res = await axios.get(
+      "https://api.spotify.com/v1/browse/new-releases",
+      {
+        headers: {
+          Authorization: "Bearer " + this.access_token,
+          Accept: "application/json",
+        },
+      }
+    );
+
+    return res.data;
+  }
 }
 
 export default new Spotify();

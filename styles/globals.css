@@ -33,3 +33,7 @@ div#__next > div {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+.item:hover .sub_item {
+  @apply block transition duration-100 ease-in-out;
+}
