@@ -1,4 +1,4 @@
-import useProfile from "../../hooks/useProfile";
+import useProfile from "hooks/useProfile";
 
 export default function Header() {
   const user = useProfile();

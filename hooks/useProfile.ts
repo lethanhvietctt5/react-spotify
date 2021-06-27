@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAppSelector } from ".";
-import spotify from "../spotify";
+import spotify from "spotify";
 
 interface User {
   display_name: string;

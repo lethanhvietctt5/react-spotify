@@ -90,6 +90,78 @@ class Spotify {
 
     return res.data;
   }
+
+  async getAPlaylist(playlist_id: string) {
+    const res = await axios.get(
+      "https://api.spotify.com/v1/playlists/" + playlist_id,
+      {
+        headers: {
+          Authorization: "Bearer " + this.access_token,
+          Accept: "application/json",
+        },
+      }
+    );
+
+    return res.data;
+  }
+
+  async getAAlbum(album_id: string) {
+    const res = await axios.get(
+      "https://api.spotify.com/v1/albums/" + album_id,
+      {
+        headers: {
+          Authorization: "Bearer " + this.access_token,
+          Accept: "application/json",
+        },
+      }
+    );
+
+    return res.data;
+  }
+
+  async getFuturedPlaylists() {
+    const res = await axios.get(
+      "https://api.spotify.com/v1/browse/featured-playlists",
+      {
+        headers: {
+          Authorization: "Bearer " + this.access_token,
+          Accept: "application/json",
+        },
+      }
+    );
+
+    return res.data;
+  }
+
+  async getArtistProfile(artist_id: string) {
+    const res = await axios.get(
+      "https://api.spotify.com/v1/artists/" + artist_id,
+      {
+        headers: {
+          Authorization: "Bearer " + this.access_token,
+          Accept: "application/json",
+        },
+      }
+    );
+
+    return res.data;
+  }
+
+  async getArtistTopTracks(artist_id: string) {
+    const res = await axios.get(
+      "https://api.spotify.com/v1/artists/" +
+        artist_id +
+        "/top-tracks?market=VN",
+      {
+        headers: {
+          Authorization: "Bearer " + this.access_token,
+          Accept: "application/json",
+        },
+      }
+    );
+
+    return res.data;
+  }
 }
 
 export default new Spotify();

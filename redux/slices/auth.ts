@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { getUriRefresh } from "../../spotify";
+import { getUriRefresh } from "spotify";
 
 interface State {
   access_token: string;

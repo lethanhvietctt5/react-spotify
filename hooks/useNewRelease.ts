@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAppSelector } from ".";
-import spotify from "../spotify";
+import spotify from "spotify";
 
 interface Album {
   id: string;
@@ -23,7 +23,6 @@ export default function useUserTopTracks() {
     const fetchRecentTracks = async () => {
       if (token) {
         const res = await spotify.getNewReleaseTracks();
-        console.log(res.albums.items);
         let allITrack: Album[] = [] as Album[];
         let singleTrack: Album = {} as Album;
         for (const track of res.albums.items) {
