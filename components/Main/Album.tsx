@@ -1,5 +1,5 @@
 import useAlbum from "hooks/useAlbum";
-
+import Image from "next/image";
 interface Props {
   id: string;
 }
@@ -39,7 +39,13 @@ export default function Album({ id }: Props) {
     <div>
       <div className="w-full h-72 flex justify-start p-4 ml-4 text-white">
         <div className="w-1/6 mr-8">
-          <img className="w-full" src={album?.image} alt="" />
+          <Image
+            layout="responsive"
+            height="64"
+            width="64"
+            src={album?.image || "/images/test.jpeg"}
+            alt=""
+          />
         </div>
         <div className="flex flex-col justify-between my-8">
           <div className="text-sm">Album</div>
@@ -70,7 +76,7 @@ export default function Album({ id }: Props) {
           </div>
         </div>
         {album?.tracks.map((track, index) => (
-          <div className="w-full flex items-center pr-8 py-2 my-2 hover:bg-white hover:bg-opacity-10 rounded">
+          <div key={track.id} className="w-full flex items-center pr-8 py-2 my-2 hover:bg-white hover:bg-opacity-10 rounded">
             <div className="w-5/12 flex items-center">
               <div className="w-1/7 text-center">{index + 1}</div>
               <div className="w-6/7">

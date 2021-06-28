@@ -1,6 +1,7 @@
 import { Playlist } from "hooks/useFuturedPlaylists";
 import { RTrack } from "hooks/useRecentlyTracks";
 import Link from "next/link";
+import Image from "next/image";
 interface topicProps {
   title: string;
   sub_title: string;
@@ -25,9 +26,9 @@ export default function Topic({
         <Link href={`/${type}/${item.id}`} key={item.id}>
           <div className="bg-end hover:bg-white hover:bg-opacity-10 transition duration-300 ease-in-out p-4 rounded">
             <div className="item w-full relative">
-              <img className="w-full" src={item.image} alt="" />
-              <div className="sub_item absolute bottom-0 right-0 mb-3 mr-3 hidden">
-                <img className="w-10" src="/svgs/play.svg" alt="" />
+              <Image layout="responsive" height="64" width="64" src={item.image} alt="" />
+              <div className="sub_item w-1/5 absolute bottom-0 right-0 mb-3 mr-3 hidden">
+                <Image layout="responsive" height="64" width="64" src="/svgs/play.svg" alt="" />
               </div>
             </div>
             <div className="text-sm font-semibold mt-2 whitespace-nowrap overflow-hidden overflow-ellipsis">
@@ -44,9 +45,11 @@ export default function Topic({
         <Link href={`/${type}/${item.id}`} key={item.id}>
           <div className="bg-end hover:bg-white hover:bg-opacity-10 transition duration-300 ease-in-out p-4 rounded">
             <div className="item w-full relative">
-              <img className="w-full" src={item.image} alt="" />
-              <div className="sub_item absolute bottom-0 right-0 mb-3 mr-3 hidden">
-                <img className="w-10" src="/svgs/play.svg" alt="" />
+              <div className="w-full">
+                <Image layout="responsive" height="64" width="64" src={item.image} alt="" />
+              </div>
+              <div className="sub_item w-1/5 absolute bottom-0 right-0 mb-3 mr-3 hidden">
+                <Image layout="responsive" height="64" width="64" src="/svgs/play.svg" alt="" />
               </div>
             </div>
             <div className="text-sm font-semibold mt-2 whitespace-nowrap overflow-hidden overflow-ellipsis">

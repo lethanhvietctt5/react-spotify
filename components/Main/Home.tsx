@@ -1,33 +1,34 @@
 import useNewRelease from "hooks/useNewRelease";
 import useRecentlyTracks from "hooks/useRecentlyTracks";
 import Topic from "./Topic";
-import Reac from "react";
+import Reac, { useContext } from "react";
 import useFuturedPlaylists, { Playlist } from "hooks/useFuturedPlaylists";
+import HomeContext from "context"
 
 export default function Home() {
-  const recentlyTracks = useRecentlyTracks();
-  const newRelease = useNewRelease();
-  const futuredPlaylists = useFuturedPlaylists();
+
+  const context = useContext(HomeContext)
+  
   return (
     <Reac.Fragment>
       <Topic
         title="Đã phát gần đây"
         sub_title="Lấy cảm hứng từ những hoạt động gần đây của bạn"
-        tracks={recentlyTracks}
+        tracks={context.recentlyTracks}
         type="track"
         playlists={[]}
       />
       <Topic
         title="Nhạc cho bạn"
         sub_title="Dựa trên những ca khúc bạn đã nghe"
-        tracks={newRelease}
+        tracks={context.newRelease}
         type="album"
         playlists={[]}
       />
       <Topic
         title="Nổi bật"
         sub_title="Nổi bật trên các bảng xếp hạng gần đây"
-        playlists={futuredPlaylists}
+        playlists={context.futuredPlaylists}
         tracks={[]}
         type="playlist"
       />

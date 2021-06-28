@@ -1,6 +1,6 @@
 import useArtist from "hooks/useArtist";
 import useArtistTopTracks from "hooks/useArtistTopTracks";
-
+import Image from "next/image"
 interface Props {
   id: string;
 }
@@ -41,8 +41,8 @@ export default function Artist({ id }: Props) {
     <div className="px-10">
       <div className="h-72 text-gray-400">
         <div className="flex items-end h-full">
-          <div className="h-full">
-            <img className="h-full" src={profile?.image} alt="" />
+          <div className="h-full w-64">
+            <Image layout="responsive" height="64" width="64" src={profile?.image || "/images/test.jpeg"} alt="" />
           </div>
           <div className="ml-8 pt-6 pb-3 h-full flex flex-col justify-between">
             <div className="text-white text-xl">Artist</div>
@@ -62,8 +62,8 @@ export default function Artist({ id }: Props) {
           <div className="flex justify-between w-full items-center">
             <div className="flex w-7/12 items-center">
               <div className="w-1/12">{index+1}</div>
-              <div className="flex items-center">
-                <img className="w-1/12" src={track.image} alt="" />
+              <div className="flex items-center h-10">
+                <Image layout="responsive" height="64" width="64" src={track.image || "/images/test.jpeg"} alt="" />
                 <div className="ml-2 text-white">
                   <div>{track.name}</div>
                 </div>

@@ -43,7 +43,7 @@ export const getToken = () => {
   return { access_token, type, expire_in };
 };
 
-class Spotify {
+class SpotifyAPI {
   public access_token: string = "";
   public refresh_token: string = "";
   constructor() {}
@@ -164,4 +164,4 @@ class Spotify {
   }
 }
 
-export default new Spotify();
+export default new SpotifyAPI();

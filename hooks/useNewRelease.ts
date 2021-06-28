@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useAppSelector } from ".";
 import spotify from "spotify";
 
-interface Album {
+export interface Album {
   id: string;
   href: string;
   duration: number;

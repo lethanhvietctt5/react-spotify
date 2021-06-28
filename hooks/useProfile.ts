@@ -21,7 +21,7 @@ export default function useProfile() {
           display_name: res.display_name,
           email: res.email,
           url: res.external_urls.spotify,
-          image: res.images[0].url,
+          image: res.images[0]?.url,
           id: res.id,
         });
       }
