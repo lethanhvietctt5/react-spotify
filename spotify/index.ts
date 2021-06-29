@@ -278,6 +278,32 @@ class SpotifyAPI {
     );
     return res.data;
   }
+
+  async getBrowses() {
+    const res = await axios.get(
+      "https://api.spotify.com/v1/browse/categories?country=VN&limit=50",
+      {
+        headers: {
+          Authorization: "Bearer " + this.access_token,
+          Accept: "application/json",
+        },
+      }
+    );
+    return res.data;
+  }
+
+  async search(query: string) {
+    const res = await axios.get(
+      `https://api.spotify.com/v1/search?q=${query}&type=track%2Cartist%2Calbum%2Cplaylist&market=VN&limit=20`,
+      {
+        headers: {
+          Authorization: "Bearer " + this.access_token,
+          Accept: "application/json",
+        },
+      }
+    );
+    return res.data;
+  }
 }
 
 export default new SpotifyAPI();

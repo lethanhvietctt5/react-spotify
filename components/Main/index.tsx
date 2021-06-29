@@ -1,4 +1,3 @@
-import Header from "./Header";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "hooks";
 import spotify, { getToken, url_auth } from "spotify";
@@ -7,6 +6,7 @@ import useRecentlyTracks from "hooks/useRecentlyTracks";
 import useFuturedPlaylists from "hooks/useFuturedPlaylists";
 import useNewRelease from "hooks/useNewRelease";
 import HomeContext from "context";
+import Header from "components/Header";
 
 type Props = {
   children?: JSX.Element | JSX.Element[];

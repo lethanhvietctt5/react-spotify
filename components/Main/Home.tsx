@@ -3,12 +3,11 @@ import useRecentlyTracks from "hooks/useRecentlyTracks";
 import Topic from "./Topic";
 import Reac, { useContext } from "react";
 import useFuturedPlaylists, { Playlist } from "hooks/useFuturedPlaylists";
-import HomeContext from "context"
+import HomeContext from "context";
 
 export default function Home() {
+  const context = useContext(HomeContext);
 
-  const context = useContext(HomeContext)
-  
   return (
     <Reac.Fragment>
       <Topic
