@@ -1,6 +1,39 @@
+import { debounce } from "@material-ui/core";
 import Slider from "@material-ui/core/Slider";
+import { useAppDispatch, useAppSelector } from "hooks";
+import { useCallback, useEffect, useState } from "react";
+import spotify from "spotify";
 
 export default function Volume() {
+  const state = useAppSelector((state) => state.player);
+  const dispatch = useAppDispatch();
+  const [volume, setVolume] = useState<number>(state.volume);
+  const [isOnChange, setOnChange] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!isOnChange) {
+      setVolume(state.volume);
+    }
+  }, [state.volume]);
+
+  async function vol(device_id: string, vol: number) {
+    await spotify.setVolume(vol, device_id);
+  }
+
+  const debounceForward = useCallback(
+    debounce((nextValue: number, device_id: string) => {
+      vol(device_id, nextValue);
+      setOnChange(false);
+    }, 100),
+    []
+  );
+
+  function handleChange(value: number) {
+    setOnChange(true);
+    setVolume(value);
+    debounceForward(value, state.device_id);
+  }
+
   return (
     <div className="text-gray-500 w-1/3 lg:w-1/4 ">
       <div className="w-full h-full flex justify-center items-center px-4">
@@ -25,7 +58,15 @@ export default function Volume() {
           </svg>
         </div>
         <div className="w-8/12 ml-4 mt-2">
-          <Slider min={0} max={100} value={1} style={{ color: "gray"}}/>
+          <Slider
+            min={0}
+            max={100}
+            value={volume}
+            onChange={(e, value) => {
+              handleChange(value as number);
+            }}
+            style={{ color: "gray" }}
+          />
         </div>
       </div>
     </div>

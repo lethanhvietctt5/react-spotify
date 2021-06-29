@@ -218,7 +218,64 @@ class SpotifyAPI {
         },
       }
     );
+    return res.data;
+  }
 
+  async next(device_id: string) {
+    const res = await axios.post(
+      "https://api.spotify.com/v1/me/player/next?&device_id=" + device_id,
+      {},
+      {
+        headers: {
+          Authorization: "Bearer " + this.access_token,
+          Accept: "application/json",
+        },
+      }
+    );
+    return res.data;
+  }
+
+  async previous(device_id: string) {
+    const res = await axios.post(
+      "https://api.spotify.com/v1/me/player/previous?&device_id=" + device_id,
+      {},
+      {
+        headers: {
+          Authorization: "Bearer " + this.access_token,
+          Accept: "application/json",
+        },
+      }
+    );
+    return res.data;
+  }
+
+  async toggleShuffle(shuffle: boolean, device_id: string) {
+    const res = await axios.put(
+      `https://api.spotify.com/v1/me/player/shuffle?state=${shuffle}&device_id=` +
+        device_id,
+      {},
+      {
+        headers: {
+          Authorization: "Bearer " + this.access_token,
+          Accept: "application/json",
+        },
+      }
+    );
+    return res.data;
+  }
+
+  async setVolume(vol: number, device_id: string) {
+    const res = await axios.put(
+      `https://api.spotify.com/v1/me/player/volume?volume_percent=${vol}&device_id=` +
+        device_id,
+      {},
+      {
+        headers: {
+          Authorization: "Bearer " + this.access_token,
+          Accept: "application/json",
+        },
+      }
+    );
     return res.data;
   }
 }

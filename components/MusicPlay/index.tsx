@@ -34,6 +34,7 @@ export default function Music() {
           getOAuthToken: (callback) => {
             callback(token);
           },
+          volume: 50,
         });
 
         player.addListener("initialization_error", ({ message }) => {
@@ -104,8 +105,13 @@ export default function Music() {
         dispatch(setPosition(PlayerState.position + 1000));
       }, 1000);
     }
-    if (PlayerState.duration_ms - PlayerState.position < 1000)
+    if (
+      PlayerState.duration_ms != 0 &&
+      PlayerState.duration_ms - PlayerState.position < 1000
+    ) {
       dispatch(setPosition(0));
+      dispatch(setOffset(PlayerState.offset + 1));
+    }
     return () => {
       clearInterval(inter);
     };

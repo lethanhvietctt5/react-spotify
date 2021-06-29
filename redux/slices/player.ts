@@ -13,6 +13,7 @@ interface IPlayer {
   uri: string;
   offset: number;
   position: number;
+  volume: number;
 }
 
 const initialState = {
@@ -28,6 +29,7 @@ const initialState = {
   uri: "",
   offset: 0,
   position: 0,
+  volume: 50,
 };
 
 const playerSlice = createSlice({
@@ -70,6 +72,9 @@ const playerSlice = createSlice({
     setPaused: (state, action) => {
       state.paused = action.payload;
     },
+    setVolume: (state, action) => {
+      state.volume = action.payload.payload;
+    },
   },
 });
 
@@ -86,6 +91,7 @@ export const {
   setDeviceID,
   setPosition,
   setPaused,
+  setVolume,
 } = playerSlice.actions;
 
 export default playerSlice.reducer;
