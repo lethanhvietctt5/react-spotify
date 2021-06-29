@@ -17,11 +17,13 @@ export default function Home() {
         tracks={context.recentlyTracks}
         type="track"
         playlists={[]}
+        albums={[]}
       />
       <Topic
         title="Nhạc cho bạn"
         sub_title="Dựa trên những ca khúc bạn đã nghe"
-        tracks={context.newRelease}
+        tracks={[]}
+        albums={context.newRelease}
         type="album"
         playlists={[]}
       />
@@ -30,6 +32,7 @@ export default function Home() {
         sub_title="Nổi bật trên các bảng xếp hạng gần đây"
         playlists={context.futuredPlaylists}
         tracks={[]}
+        albums={[]}
         type="playlist"
       />
     </Reac.Fragment>

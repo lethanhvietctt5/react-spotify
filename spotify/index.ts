@@ -162,6 +162,65 @@ class SpotifyAPI {
 
     return res.data;
   }
+
+  async playMusic(
+    uri: string,
+    offset: number,
+    position_ms: number,
+    device_id: string
+  ) {
+    const res = await axios.put(
+      "https://api.spotify.com/v1/me/player/play?device_id=" + device_id,
+      {
+        context_uri: uri,
+        offset: {
+          position: offset,
+        },
+        position_ms: position_ms,
+      },
+      {
+        headers: {
+          Authorization: "Bearer " + this.access_token,
+          Accept: "application/json",
+        },
+      }
+    );
+
+    return res.data;
+  }
+
+  async pause(device_id: string) {
+    const res = await axios.put(
+      "https://api.spotify.com/v1/me/player/pause?device_id=" + device_id,
+      {},
+      {
+        headers: {
+          Authorization: "Bearer " + this.access_token,
+          Accept: "application/json",
+        },
+      }
+    );
+
+    return res.data;
+  }
+
+  async forward(device_id: string, position: number) {
+    const res = await axios.put(
+      "https://api.spotify.com/v1/me/player/seek?position_ms=" +
+        position +
+        "&device_id=" +
+        device_id,
+      {},
+      {
+        headers: {
+          Authorization: "Bearer " + this.access_token,
+          Accept: "application/json",
+        },
+      }
+    );
+
+    return res.data;
+  }
 }
 
 export default new SpotifyAPI();

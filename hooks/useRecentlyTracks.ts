@@ -13,6 +13,8 @@ export interface RTrack {
   };
   name: string;
   image: string;
+  uri: string;
+  offset: number;
 }
 
 export default function useRecentlyTracks() {
@@ -36,6 +38,8 @@ export default function useRecentlyTracks() {
             id: track.track.artists[0].id,
             href: track.track.artists[0].href,
           };
+          singleTrack.uri = track.track.album.uri;
+          singleTrack.offset = track.track.track_number;
           let isExisting = allRTrack.filter(
             (track) => track.id === singleTrack.id
           );

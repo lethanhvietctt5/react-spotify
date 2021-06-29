@@ -1,4 +1,5 @@
 const scopes: Array<string> = [
+  "streaming",
   "ugc-image-upload",
   "user-read-recently-played",
   "user-top-read",

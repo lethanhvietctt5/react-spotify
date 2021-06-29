@@ -1,6 +1,79 @@
+import { debounce } from "@material-ui/core";
 import Slider from "@material-ui/core/Slider";
+import { useAppSelector } from "hooks";
+import { useCallback, useEffect, useState } from "react";
+import spotify from "spotify";
+
+function msToTime(duration: number) {
+  let milliseconds = Math.floor((duration % 1000) / 100),
+    seconds = Math.floor((duration / 1000) % 60),
+    minutes = Math.floor((duration / (1000 * 60)) % 60),
+    hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+
+  let h: string;
+  if (hours == 0) {
+    h = "";
+  } else if (hours < 10) {
+    h = "0" + hours.toString();
+  } else h = hours.toString();
+
+  let m: string;
+  if (minutes < 10) {
+    m = "0" + minutes.toString();
+  } else m = minutes.toString();
+
+  let s: string;
+  if (seconds < 10) {
+    s = "0" + seconds.toString();
+  } else s = seconds.toString();
+
+  if (h.length > 0) {
+    return h + ":" + m + ":" + s;
+  } else return m + ":" + s;
+}
 
 export default function Controls() {
+  const state = useAppSelector((state) => state.player);
+  const [crtTime, setCrtTime] = useState<number>(0);
+  const [isOnChange, setOnChange] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!isOnChange) {
+      setCrtTime(state.position);
+    }
+  }, [state.position]);
+
+  function handleChange(value: number) {
+    setOnChange(true);
+    setCrtTime(value);
+    debounceForward(value, state.device_id);
+  }
+
+  async function pause() {
+    await spotify.pause(state.device_id);
+  }
+
+  async function play() {
+    await spotify.playMusic(
+      state.uri,
+      state.offset,
+      state.position,
+      state.device_id
+    );
+  }
+
+  async function forward(device_id: string, position: number) {
+    await spotify.forward(device_id, position);
+  }
+
+  const debounceForward = useCallback(
+    debounce((nextValue: number, device_id: string) => {
+      forward(device_id, nextValue);
+      setOnChange(false);
+    }, 300),
+    []
+  );
+
   return (
     <div className="w-1/3 lg:w-1/2 h-full text-gray-500 flex justify-center items-center px-4">
       <div className="w-full">
@@ -29,12 +102,35 @@ export default function Controls() {
               </svg>
             </div>
             <div className="text-3xl text-white">
-              <svg width="1em" height="1em" viewBox="0 0 16 16">
-                <path
-                  fill="currentColor"
-                  d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8s8-3.6 8-8s-3.6-8-8-8zM6 12V4l6 4l-6 4z"
-                ></path>
-              </svg>
+              {state.paused ? (
+                <svg
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 16 16"
+                  onClick={() => play()}
+                >
+                  <path
+                    fill="currentColor"
+                    d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8s8-3.6 8-8s-3.6-8-8-8zM6 12V4l6 4l-6 4z"
+                  ></path>
+                </svg>
+              ) : (
+                <svg
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 24 24"
+                  onClick={() => pause()}
+                >
+                  <g fill="none">
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12zm9-3a1 1 0 1 0-2 0v6a1 1 0 1 0 2 0V9zm4 0a1 1 0 1 0-2 0v6a1 1 0 1 0 2 0V9z"
+                      fill="currentColor"
+                    ></path>
+                  </g>
+                </svg>
+              )}
             </div>
             <div>
               <svg width="1em" height="1em" viewBox="0 0 16 16">
@@ -65,8 +161,20 @@ export default function Controls() {
             </div>
           </div>
         </div>
-        <div>
-          <Slider style={{ color: "gray" }} />
+        <div className="flex w-full items-center">
+          <div className="text-xs">{msToTime(state.position)}</div>
+          <div className="w-10/12 mx-3 mt-1">
+            <Slider
+              min={0}
+              max={state.duration_ms}
+              value={crtTime}
+              style={{ color: "gray" }}
+              onChange={(e, value) => {
+                handleChange(value as number);
+              }}
+            />
+          </div>
+          <div className="text-xs">{msToTime(state.duration_ms)}</div>
         </div>
       </div>
     </div>

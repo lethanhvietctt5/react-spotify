@@ -7,6 +7,7 @@ export interface Playlist {
   name: string;
   description: string;
   image: string;
+  uri: string;
 }
 
 export default function useFuturedPlaylists() {
@@ -23,6 +24,7 @@ export default function useFuturedPlaylists() {
           pll.name = playlist.name;
           pll.description = playlist.description;
           pll.image = playlist.images[0].url;
+          pll.uri = playlist.uri;
           playlists.push(JSON.parse(JSON.stringify(pll)));
         }
         setFuturedPlaylists(playlists);

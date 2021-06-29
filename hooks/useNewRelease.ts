@@ -13,6 +13,7 @@ export interface Album {
   };
   name: string;
   image: string;
+  uri: string;
 }
 
 export default function useUserTopTracks() {
@@ -36,6 +37,7 @@ export default function useUserTopTracks() {
             id: track.artists[0].id,
             href: track.artists[0].href,
           };
+          singleTrack.uri = track.uri;
           let isExisting = allITrack.filter(
             (track) => track.id === singleTrack.id
           );

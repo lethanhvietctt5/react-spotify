@@ -25,7 +25,7 @@ export default function Volume() {
           </svg>
         </div>
         <div className="w-8/12 ml-4 mt-2">
-          <Slider style={{ color: "gray"}}/>
+          <Slider min={0} max={100} value={1} style={{ color: "gray"}}/>
         </div>
       </div>
     </div>
