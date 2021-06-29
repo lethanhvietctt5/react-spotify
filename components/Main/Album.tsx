@@ -1,40 +1,29 @@
+import { useAppDispatch, useAppSelector } from "hooks";
 import useAlbum from "hooks/useAlbum";
 import Image from "next/image";
+import { setOffset, setURI } from "redux/slices/player";
+import spotify from "spotify";
+import { msToTime } from "utils";
+import Link from "next/link";
+
 interface Props {
   id: string;
 }
 
-function msToTime(duration: number) {
-  let milliseconds = Math.floor((duration % 1000) / 100),
-    seconds = Math.floor((duration / 1000) % 60),
-    minutes = Math.floor((duration / (1000 * 60)) % 60),
-    hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
-
-  let h: string;
-  if (hours == 0) {
-    h = "";
-  } else if (hours < 10) {
-    h = "0" + hours.toString();
-  } else h = hours.toString();
-
-  let m: string;
-  if (minutes < 10) {
-    m = "0" + minutes.toString();
-  } else m = minutes.toString();
-
-  let s: string;
-  if (seconds < 10) {
-    s = "0" + seconds.toString();
-  } else s = seconds.toString();
-
-  if (h.length > 0) {
-    return h + ":" + m + ":" + s;
-  } else return m + ":" + s;
-}
-
 export default function Album({ id }: Props) {
   let album = useAlbum(id);
-  console.log(album);
+
+  const device_id = useAppSelector((state) => state.player.device_id);
+  const track_id = useAppSelector((state) => state.player.track_id);
+  const paused = useAppSelector((state) => state.player.paused);
+  const dispatch = useAppDispatch();
+
+  async function play(uri: string, offset: number, position_ms: number) {
+    await spotify.playMusic(uri, offset, position_ms, device_id);
+    dispatch(setURI(uri));
+    dispatch(setOffset(offset));
+  }
+
   return (
     <div>
       <div className="w-full h-72 flex justify-start p-4 ml-4 text-white">
@@ -76,11 +65,48 @@ export default function Album({ id }: Props) {
           </div>
         </div>
         {album?.tracks.map((track, index) => (
-          <div key={track.id} className="w-full flex items-center pr-8 py-2 my-2 hover:bg-white hover:bg-opacity-10 rounded">
+          <div
+            key={track.id}
+            className="w-full flex items-center pr-8 py-2 my-2 hover:bg-white hover:bg-opacity-10 rounded"
+          >
             <div className="w-5/12 flex items-center">
-              <div className="w-1/7 text-center">{index + 1}</div>
+              {track.id == track_id ? (
+                paused ? (
+                  <div className="w-1/7 flex justify-center items-center">
+                    <div className="w-2/3 text-green-600 flex justify-center items-center text-xl">
+                      <svg width="1em" height="1em" viewBox="0 0 256 256">
+                        <path
+                          d="M239.969 128a15.9 15.9 0 0 1-7.656 13.656l-143.97 87.985A15.998 15.998 0 0 1 64 215.992V40.008a15.998 15.998 0 0 1 24.344-13.649l143.969 87.985A15.9 15.9 0 0 1 239.969 128z"
+                          fill="currentColor"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="w-1/7 flex justify-center items-center">
+                    <div className="w-1/3">
+                      <Image
+                        layout="responsive"
+                        height="64"
+                        width="64"
+                        src={"/gifs/playing.gif"}
+                      />
+                    </div>
+                  </div>
+                )
+              ) : (
+                <div className="w-1/7 text-center">{index + 1}</div>
+              )}
+
               <div className="w-6/7">
-                <div className="text-white text-base">{track.name}</div>
+                <div
+                  className="text-white text-base cursor-pointer"
+                  onClick={() => {
+                    play("spotify:album:" + album?.id, index, 0);
+                  }}
+                >
+                  {track.name}
+                </div>
                 <div className="text-xs">
                   {track.artists?.map((artist) => artist.name).join(", ")}
                 </div>

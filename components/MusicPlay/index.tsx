@@ -34,7 +34,7 @@ export default function Music() {
           getOAuthToken: (callback) => {
             callback(token);
           },
-          volume: 50,
+          volume: 0.5,
         });
 
         player.addListener("initialization_error", ({ message }) => {

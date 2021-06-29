@@ -7,6 +7,8 @@ interface Track {
   name: string;
   image: string;
   duration_ms: number;
+  uri: string;
+  offset: number;
 }
 
 export default function useArtistTopTracks(artist_id: string) {
@@ -23,6 +25,8 @@ export default function useArtistTopTracks(artist_id: string) {
         name: track.name,
         image: track.album.images[0].url,
         duration_ms: track.duration_ms,
+        uri: track.album.uri,
+        offset: track.track_number,
       }));
       setTracks(totalTopTracks);
     };

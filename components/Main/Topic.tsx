@@ -25,6 +25,7 @@ export default function Topic({
 }: topicProps) {
   const device_id = useAppSelector((state) => state.player.device_id);
   const dispatch = useAppDispatch();
+  
   async function play(uri: string, offset: number, position_ms: number) {
     await spotify.playMusic(uri, offset - 1, position_ms, device_id);
     dispatch(setURI(uri));
