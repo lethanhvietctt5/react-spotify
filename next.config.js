@@ -7,6 +7,8 @@ module.exports = {
       "mosaic.scdn.co",
       "thisis-images.scdn.co",
       "scdn.co",
+      "charts-images.scdn.co",
+      "daily-mix.scdn.co",
     ],
   },
 };

@@ -26,19 +26,21 @@ export default function Album({ id }: Props) {
 
   return (
     <div>
-      <div className="w-full h-72 flex justify-start p-4 ml-4 text-white">
-        <div className="w-1/6 mr-8">
-          <Image
-            layout="responsive"
-            height="64"
-            width="64"
-            src={album?.image || "/images/test.jpeg"}
-            alt=""
-          />
+      <div className="w-full h-52 lg:h-60 2xl:h-72 flex justify-start p-4 ml-4 text-white">
+        <div className="w-1/6 mr-8 flex justify-center items-center">
+          <div className="w-full">
+            <Image
+              layout="responsive"
+              height="64"
+              width="64"
+              src={album?.image || "/images/test.jpeg"}
+              alt=""
+            />
+          </div>
         </div>
         <div className="flex flex-col justify-between my-8">
           <div className="text-sm">Album</div>
-          <div className="text-6xl font-extrabold">{album?.name}</div>
+          <div className="text-3xl lg:text-4xl xl:text-5xl font-extrabold">{album?.name}</div>
           <div>
             <div className="flex text-sm">
               <div className="font-bold">
@@ -100,7 +102,7 @@ export default function Album({ id }: Props) {
 
               <div className="w-6/7">
                 <div
-                  className="text-white text-base cursor-pointer"
+                  className="text-white text-base cursor-pointer whitespace-nowrap overflow-hidden overflow-ellipsis"
                   onClick={() => {
                     play("spotify:album:" + album?.id, index, 0);
                   }}

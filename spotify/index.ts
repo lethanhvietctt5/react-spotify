@@ -304,6 +304,71 @@ class SpotifyAPI {
     );
     return res.data;
   }
+
+  async getSavedTracks() {
+    const res = await axios.get(
+      "https://api.spotify.com/v1/me/tracks?limit=50",
+      {
+        headers: {
+          Authorization: "Bearer " + this.access_token,
+          Accept: "application/json",
+        },
+      }
+    );
+    return res.data;
+  }
+
+  async getSavedAlbums() {
+    const res = await axios.get(
+      "https://api.spotify.com/v1/me/albums?limit=50",
+      {
+        headers: {
+          Authorization: "Bearer " + this.access_token,
+          Accept: "application/json",
+        },
+      }
+    );
+    return res.data;
+  }
+
+  async getAllPlaylists() {
+    const res = await axios.get(
+      "https://api.spotify.com/v1/me/playlists?limit=50",
+      {
+        headers: {
+          Authorization: "Bearer " + this.access_token,
+          Accept: "application/json",
+        },
+      }
+    );
+    return res.data;
+  }
+
+  async getBrowse(categories_id: string) {
+    const res = await axios.get(
+      `https://api.spotify.com/v1/browse/categories/${categories_id}/playlists?country=VN&limit=50`,
+      {
+        headers: {
+          Authorization: "Bearer " + this.access_token,
+          Accept: "application/json",
+        },
+      }
+    );
+    return res.data;
+  }
+
+  async getCategory(categories_id: string) {
+    const res = await axios.get(
+      `https://api.spotify.com/v1/browse/categories/${categories_id}?country=VN`,
+      {
+        headers: {
+          Authorization: "Bearer " + this.access_token,
+          Accept: "application/json",
+        },
+      }
+    );
+    return res.data;
+  }
 }
 
 export default new SpotifyAPI();

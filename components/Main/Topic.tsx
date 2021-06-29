@@ -170,7 +170,7 @@ export default function Topic({
         <span className="cursor-pointer">{title}</span>
       </div>
       <div className="mb-4 ml-2 text-sm text-gray-300">{sub_title}</div>
-      <div className="grid grid-cols-7 gap-4">{renderTrack()}</div>
+      <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-4">{renderTrack()}</div>
     </div>
   );
 }

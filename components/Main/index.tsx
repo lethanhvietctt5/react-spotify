@@ -7,6 +7,7 @@ import useFuturedPlaylists from "hooks/useFuturedPlaylists";
 import useNewRelease from "hooks/useNewRelease";
 import HomeContext from "context";
 import Header from "components/Header";
+import Head from "next/head";
 
 type Props = {
   children?: JSX.Element | JSX.Element[];
@@ -35,8 +36,11 @@ export default function Main({ children }: Props) {
       value={{ recentlyTracks, newRelease, futuredPlaylists }}
     >
       <div className="w-main h-full bg-gradient-to-t from-start to-end overflow-y-scroll no-scrollbar pb-4">
+        <Head>
+          <link rel="icon" href="/gifs/playing.gif" type="image/gif" />
+        </Head>
         <Header />
-        {children}
+        <div className="w-full h-full max-w-screen-2xl">{children}</div>
       </div>
     </HomeContext.Provider>
   );

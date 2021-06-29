@@ -27,9 +27,7 @@ export default function Playlist() {
       </div>
 
       <div className="p-2">
-        <div className="text-gray-500 my-3 mx-4 py-3 border-t border-gray-500 hover:text-white hover:cursor-pointer">
-          Daily Mix 1
-        </div>
+        <div className="text-gray-500 my-3 mx-4 py-3 border-t border-gray-500 hover:text-white hover:cursor-pointer"></div>
       </div>
     </div>
   );

@@ -37,3 +37,11 @@ div#__next > div {
 .item:hover .sub_item {
   @apply block transition duration-100 ease-in-out;
 }
+
+.MuiSlider-track {
+  @apply text-green-600;
+}
+
+.MuiSlider-thumb:hover {
+  @apply text-green-400;
+}

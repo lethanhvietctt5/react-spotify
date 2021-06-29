@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useAppDispatch, useAppSelector } from "hooks";
 import spotify from "spotify";
 import { setOffset, setURI } from "redux/slices/player";
+import Head from "next/head";
 
 interface Props {
   result: IResult | undefined;
@@ -11,6 +12,7 @@ interface Props {
 
 export default function Result({ result }: Props) {
   const device_id = useAppSelector((state) => state.player.device_id);
+  const keyword = useAppSelector((state) => state.search.keyword);
   const dispatch = useAppDispatch();
 
   async function play(uri: string, offset: number, position_ms: number) {
@@ -232,6 +234,9 @@ export default function Result({ result }: Props) {
 
   return (
     <div className="pr-4">
+      <Head>
+        <title>Tìm kiếm: {keyword}</title>
+      </Head>
       {renderArtist()}
       {renderAlbums()}
       {renderPlaylist()}
