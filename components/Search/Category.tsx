@@ -59,7 +59,7 @@ export default function Category() {
     fetchCate();
   }, [token]);
   return (
-    <div>
+    <div className="pb-10">
       <Head>
         <title>Tìm kiếm - {cate?.name}</title>
       </Head>
@@ -85,7 +85,7 @@ export default function Category() {
                 </div>
               </Link>
               <div
-                className="sub_item w-1/5 absolute bottom-0 right-0 mb-3 mr-3 hidden"
+                className="sub_item w-1/5 absolute bottom-0 right-0 mb-3 mr-3 invisible opacity-0"
                 onClick={() => play(item.uri, 1, 0)}
               >
                 <Image
@@ -99,7 +99,7 @@ export default function Category() {
             </div>
             <div className="text-sm font-semibold mt-2">
               <Link href={`/playlist/${item.id}`}>
-                <div className="text-white whitespace-nowrap overflow-hidden overflow-ellipsis">
+                <div className="text-white whitespace-nowrap overflow-hidden overflow-ellipsis hover:underline cursor-pointer">
                   {item.name}
                 </div>
               </Link>

@@ -1,9 +1,9 @@
 import usePlaylist from "hooks/usePlaylist";
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useAppDispatch, useAppSelector } from "hooks";
 import spotify from "spotify";
 import { setOffset, setURI } from "redux/slices/player";
+import Head from "next/head"
 
 interface Props {
   id: string;
@@ -23,7 +23,10 @@ export default function Playlist({ id }: Props) {
   }
 
   return (
-    <div>
+    <div className="pb-10">
+      <Head>
+        <title>Playlist: {playlist?.name}</title>
+      </Head>
       <div className="w-full h-44 lg:h-52 xl:h-60 flex justify-start p-4 ml-4 text-white">
         <div className="h-full mr-8 w-1/7 flex justify-center items-center">
           <div className="w-full">
@@ -39,7 +42,9 @@ export default function Playlist({ id }: Props) {
         <div className="flex flex-col justify-between my-4">
           <div className="text-sm">Playlist</div>
           <div>
-            <div className="text-3xl lg:text-4xl xl:text-5xl font-extrabold">{playlist?.name}</div>
+            <div className="text-3xl lg:text-4xl xl:text-5xl font-extrabold">
+              {playlist?.name}
+            </div>
             <div className="text-gray-300 text-sm mt-3">
               {playlist?.description}
             </div>

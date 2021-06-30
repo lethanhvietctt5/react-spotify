@@ -81,7 +81,7 @@ export default function Result({ result }: Props) {
                       />
                     </div>
                     <div
-                      className="sub_item w-1/5 absolute bottom-0 right-0 mb-3 mr-3 hidden"
+                      className="sub_item w-1/5 absolute bottom-0 right-0 mb-3 mr-3 invisible opacity-0"
                       onClick={() => {
                         play(track.uri, track.offset, 0);
                       }}
@@ -103,11 +103,9 @@ export default function Result({ result }: Props) {
                   >
                     {track.name}
                   </div>
-                  <Link href={`/artist/${track.artist}`}>
-                    <div className="text-xs text-gray-400 mt-2 font-medium cursor-pointer hover:underline">
-                      {track.artist}
-                    </div>
-                  </Link>
+                  <div className="text-xs text-gray-400 mt-2 font-medium cursor-pointer hover:underline">
+                    {track.artist}
+                  </div>
                 </div>
               </div>
             ))}
@@ -142,7 +140,7 @@ export default function Result({ result }: Props) {
                       </div>
                     </Link>
                     <div
-                      className="sub_item w-1/5 absolute bottom-0 right-0 mb-3 mr-3 hidden hover:underline cursor-pointer"
+                      className="sub_item w-1/5 absolute bottom-0 right-0 mb-3 mr-3 invisible opacity-0 hover:underline cursor-pointer"
                       onClick={() => {
                         play(album.uri, 1, 0);
                       }}
@@ -161,11 +159,9 @@ export default function Result({ result }: Props) {
                       {album.name}
                     </div>
                   </Link>
-                  <Link href={`/artist/${album.artist}`}>
-                    <div className="text-xs text-gray-400 mt-2 font-medium hover:underline cursor-pointer">
-                      {album.artist}
-                    </div>
-                  </Link>
+                  <div className="text-xs text-gray-400 mt-2 font-medium hover:underline cursor-pointer">
+                    {album.artist}
+                  </div>
                 </div>
               </div>
             ))}
@@ -200,7 +196,7 @@ export default function Result({ result }: Props) {
                     </Link>
 
                     <div
-                      className="sub_item w-1/5 absolute bottom-0 right-0 mb-3 mr-3 hidden"
+                      className="sub_item w-1/5 absolute bottom-0 right-0 mb-3 mr-3 invisible opacity-0"
                       onClick={() => {
                         play(playlist.uri, 1, 0);
                       }}
@@ -233,7 +229,7 @@ export default function Result({ result }: Props) {
   }
 
   return (
-    <div className="pr-4">
+    <div className="pr-4 pb-10">
       <Head>
         <title>Tìm kiếm: {keyword}</title>
       </Head>

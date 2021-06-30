@@ -35,7 +35,11 @@ div#__next > div {
 }
 
 .item:hover .sub_item {
-  @apply block transition duration-100 ease-in-out;
+  @apply visible opacity-100 transition duration-500 ease-in-out;
+}
+
+.browseContainer:hover .browseName {
+  @apply underline
 }
 
 .MuiSlider-track {

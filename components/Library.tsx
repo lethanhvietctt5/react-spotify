@@ -98,7 +98,7 @@ export default function Library() {
                       />
                     </div>
                     <div
-                      className="sub_item w-1/5 absolute bottom-0 right-0 mb-3 mr-3 hidden"
+                      className="sub_item w-1/5 absolute bottom-0 right-0 mb-3 mr-3 invisible opacity-0"
                       onClick={() => {
                         play(track.uri, track.offset, 0);
                       }}
@@ -156,7 +156,7 @@ export default function Library() {
                       </div>
                     </Link>
                     <div
-                      className="sub_item w-1/5 absolute bottom-0 right-0 mb-3 mr-3 hidden hover:underline cursor-pointer"
+                      className="sub_item w-1/5 absolute bottom-0 right-0 mb-3 mr-3 invisible opacity-0 hover:underline cursor-pointer"
                       onClick={() => {
                         play(album.uri, 1, 0);
                       }}
@@ -188,7 +188,7 @@ export default function Library() {
   }
 
   return (
-    <div>
+    <div className="pb-10">
       <Head>
         <title>Thư viện</title>
       </Head>

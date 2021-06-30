@@ -5,6 +5,7 @@ import Image from "next/image";
 import { setOffset, setURI } from "redux/slices/player";
 import spotify from "spotify";
 import { msToTime } from "utils";
+import Head from "next/head";
 interface Props {
   id: string;
 }
@@ -24,7 +25,10 @@ export default function Artist({ id }: Props) {
   }
 
   return (
-    <div className="px-10">
+    <div className="px-10 pb-10">
+      <Head>
+        <title>Nghệ sĩ: {profile?.name}</title>
+      </Head>
       <div className="h-72 text-gray-400">
         <div className="flex items-end h-full">
           <div className="h-full w-64">

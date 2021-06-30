@@ -4,7 +4,7 @@ import Image from "next/image";
 import { setOffset, setURI } from "redux/slices/player";
 import spotify from "spotify";
 import { msToTime } from "utils";
-import Link from "next/link";
+import Head from "next/head";
 
 interface Props {
   id: string;
@@ -25,7 +25,10 @@ export default function Album({ id }: Props) {
   }
 
   return (
-    <div>
+    <div className="pb-10">
+      <Head>
+        <title>Album: {album?.name}</title>
+      </Head>
       <div className="w-full h-52 lg:h-60 2xl:h-72 flex justify-start p-4 ml-4 text-white">
         <div className="w-1/6 mr-8 flex justify-center items-center">
           <div className="w-full">
@@ -40,7 +43,9 @@ export default function Album({ id }: Props) {
         </div>
         <div className="flex flex-col justify-between my-8">
           <div className="text-sm">Album</div>
-          <div className="text-3xl lg:text-4xl xl:text-5xl font-extrabold">{album?.name}</div>
+          <div className="text-3xl lg:text-4xl xl:text-5xl font-extrabold">
+            {album?.name}
+          </div>
           <div>
             <div className="flex text-sm">
               <div className="font-bold">

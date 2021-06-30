@@ -25,7 +25,7 @@ export default function Topic({
 }: topicProps) {
   const device_id = useAppSelector((state) => state.player.device_id);
   const dispatch = useAppDispatch();
-  
+
   async function play(uri: string, offset: number, position_ms: number) {
     await spotify.playMusic(uri, offset - 1, position_ms, device_id);
     dispatch(setURI(uri));
@@ -55,7 +55,7 @@ export default function Topic({
               </div>
             </Link>
             <div
-              className="sub_item w-1/5 absolute bottom-0 right-0 mb-3 mr-3 hidden"
+              className="sub_item w-1/5 absolute bottom-0 right-0 mb-3 mr-3 invisible opacity-0"
               onClick={() => play(item.uri, 1, 0)}
             >
               <Image
@@ -68,7 +68,9 @@ export default function Topic({
             </div>
           </div>
           <div className="text-sm font-semibold mt-2 whitespace-nowrap overflow-hidden overflow-ellipsis">
-            <Link href={`/${type}/${item.id}`}>{item.name}</Link>
+            <Link href={`/${type}/${item.id}`}>
+              <div className="hover:underline cursor-pointer">{item.name}</div>
+            </Link>
           </div>
           <div className="text-xs text-gray-400 mt-2 font-medium">
             {item.description}
@@ -92,7 +94,7 @@ export default function Topic({
               />
             </div>
             <div
-              className="sub_item w-1/5 absolute bottom-0 right-0 mb-3 mr-3 hidden"
+              className="sub_item w-1/5 absolute bottom-0 right-0 mb-3 mr-3 invisible opacity-0"
               onClick={() => play(item.uri, item.offset, 0)}
             >
               <Image
@@ -136,7 +138,7 @@ export default function Topic({
               </div>
             </Link>
             <div
-              className="sub_item w-1/5 absolute bottom-0 right-0 mb-3 mr-3 hidden"
+              className="sub_item w-1/5 absolute bottom-0 right-0 mb-3 mr-3 invisible opacity-0"
               onClick={() => play(item.uri, 1, 0)}
             >
               <Image
@@ -170,7 +172,9 @@ export default function Topic({
         <span className="cursor-pointer">{title}</span>
       </div>
       <div className="mb-4 ml-2 text-sm text-gray-300">{sub_title}</div>
-      <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-4">{renderTrack()}</div>
+      <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-4 pb-10">
+        {renderTrack()}
+      </div>
     </div>
   );
 }

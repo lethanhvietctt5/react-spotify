@@ -35,10 +35,7 @@ export default function Main({ children }: Props) {
     <HomeContext.Provider
       value={{ recentlyTracks, newRelease, futuredPlaylists }}
     >
-      <div className="w-main h-full bg-gradient-to-t from-start to-end overflow-y-scroll no-scrollbar pb-4">
-        <Head>
-          <link rel="icon" href="/gifs/playing.gif" type="image/gif" />
-        </Head>
+      <div className="w-main bg-gradient-to-t from-start to-end overflow-y-scroll no-scrollbar pb-10">
         <Header />
         <div className="w-full h-full max-w-screen-2xl">{children}</div>
       </div>

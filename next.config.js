@@ -9,6 +9,8 @@ module.exports = {
       "scdn.co",
       "charts-images.scdn.co",
       "daily-mix.scdn.co",
+      "seeded-session-images.scdn.co",
+      "*.scdn.co"
     ],
   },
 };

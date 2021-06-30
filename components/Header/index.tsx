@@ -1,5 +1,5 @@
 import { debounce } from "@material-ui/core";
-import { useAppDispatch } from "hooks";
+import { useAppDispatch, useAppSelector } from "hooks";
 import useProfile from "hooks/useProfile";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -10,6 +10,7 @@ export default function Header() {
   const user = useProfile();
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const keyword = useAppSelector((state) => state.search.keyword);
 
   const debounceSearch = useCallback(
     debounce((nextValue: string) => {
