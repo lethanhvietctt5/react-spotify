@@ -1,6 +1,6 @@
 # React-Spotify
 ## Deploy
-Avialable on **Vercel**: https://react-spotify-two.vercel.app/
+Avialable on **Vercel**: https://spotify-reactjs.vercel.app/
 ## Preview
 An application clones **Spotify** using [ReactJS](https://reactjs.org/) as UI library, [Next.js](https://nextjs.org/) for SSR, [TailwindCSS](https://tailwindcss.com/) as UI Framework, [Redux](https://redux.js.org/) for State Management and **Spotify API**. App requires ``access_token`` from user via **Authorization Spotify** to get informations about user, tracks, albums, playlist. Using **Web Playback SDK** to play full tracks, and user need a **PREMIUM ACCOUNT** to be able to play tracks
 ### Homepage
