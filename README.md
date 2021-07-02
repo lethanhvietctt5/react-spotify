@@ -1,6 +1,7 @@
 # React-Spotify
 ## Preview
-An application clones **Spotify** using [ReactJS](https://reactjs.org/) as UI library, [Next.js](https://nextjs.org/) for SSR, [TailwindCSS](https://tailwindcss.com/) as UI Framework, [Redux](https://redux.js.org/) for State Management and **Spotify API**. App requires ``access_token`` from user via **Authorization Spotify** to get informations about user, tracks, albums, playlist. Using **Web Playback SDK** to play full tracks, and user need a **PREMIUM ACCOUNT** to be able to play tracks
+An application clones **Spotify** using [ReactJS](https://reactjs.org/) as UI library, [Next.js](https://nextjs.org/) for SSR, [TailwindCSS](https://tailwindcss.com/) as UI Framework, [Redux](https://redux.js.org/) for State Management and **Spotify API**. App requires ``access_token`` from user via **Authorization Spotify** to get informations about user, tracks, albums, playlist. Using **Web Playback SDK** to play full tracks, and user need a **PREMIUM ACCOUNT** to be able to play tracks<br /><br />
+**Video demo**: https://youtu.be/REwB-8QaHLc
 ### Homepage
 ![alt text](https://github.com/lethanhvietctt5/react-spotify/blob/master/public/preview/home.png)
 ### Album
