@@ -31,6 +31,3 @@ An application clones **Spotify** using [ReactJS](https://reactjs.org/) as UI li
 - Replace your **CLIENT_ID** and **CLIENT_SECRET** at **``./spotify/_consts.ts``**
 - **``npm install``** to install packages
 - **``npm run dev``** to start development server
-
-## Techs
-![alt text](https://github.com/lethanhvietctt5/react-spotify/blob/master/public/preview/techs.jpg)
