@@ -85,7 +85,7 @@ export default function Category() {
                 </div>
               </Link>
               <div
-                className="sub_item w-1/5 absolute bottom-0 right-0 mb-3 mr-3 invisible opacity-0"
+                className="sub_item w-2/6 absolute bottom-0 right-0 mb-3 mr-3 invisible opacity-0"
                 onClick={() => play(item.uri, 1, 0)}
               >
                 <Image

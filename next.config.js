@@ -10,7 +10,8 @@ module.exports = {
       "charts-images.scdn.co",
       "daily-mix.scdn.co",
       "seeded-session-images.scdn.co",
-      "*.scdn.co"
+      "scontent-hkt1-2.xx.fbcdn.net",
+      "*.scdn.co",
     ],
   },
 };
