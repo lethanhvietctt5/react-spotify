@@ -72,9 +72,9 @@ export default function Topic({
               <div className="hover:underline cursor-pointer">{item.name}</div>
             </Link>
           </div>
-          <div className="text-xs text-gray-400 mt-2 font-medium">
+          <p className="text-xs text-gray-400 mt-2 font-medium overflow-ellipsis overflow-hidden h-12">
             {item.description}
-          </div>
+          </p>
         </div>
       ));
     } else if (type == "track") {

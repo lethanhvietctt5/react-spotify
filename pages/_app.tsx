@@ -1,12 +1,11 @@
-import "../styles/globals.css";
+import Main from "components/Main";
+import Music from "components/MusicPlay";
+import SideBar from "components/SideBar";
 import type { AppProps } from "next/app";
-import Script from "next/script";
+import Head from "next/head";
 import { Provider } from "react-redux";
 import store from "../redux/store";
-import Head from "next/head";
-import SideBar from "components/SideBar";
-import Music from "components/MusicPlay";
-import Main from "components/Main";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

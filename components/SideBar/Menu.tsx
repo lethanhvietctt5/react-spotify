@@ -19,7 +19,7 @@ export default function Menu() {
         </div>
       </Link>
 
-      <Link href="/search">
+      <Link href="/search" scroll={false}>
         <div className="flex justify-start items-center text-white py-3 px-4 rounded hover:text-white hover:cursor-pointer ">
           <div className="text-xl">
             <svg width="1em" height="1em" viewBox="0 0 24 24">

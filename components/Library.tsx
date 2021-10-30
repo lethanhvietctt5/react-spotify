@@ -85,44 +85,45 @@ export default function Library() {
           </div>
           <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-4 mt-4 ml-4">
             {savedTracks?.map((track) => (
-              <div key={track.id}>
-                <div className="bg-end hover:bg-white hover:bg-opacity-10 transition duration-300 ease-in-out p-4 rounded">
-                  <div className="item w-full relative">
-                    <div>
-                      <Image
-                        layout="responsive"
-                        height="64"
-                        width="64"
-                        src={track.image || "/images/test.jpeg"}
-                        alt=""
-                      />
-                    </div>
-                    <div
-                      className="sub_item w-2/6 absolute bottom-0 right-0 mb-3 mr-3 invisible opacity-0"
-                      onClick={() => {
-                        play(track.uri, track.offset, 0);
-                      }}
-                    >
-                      <Image
-                        layout="responsive"
-                        height="64"
-                        width="64"
-                        src="/svgs/play.svg"
-                        alt=""
-                      />
-                    </div>
+              <div
+                key={track.id}
+                className="bg-end hover:bg-white hover:bg-opacity-10 transition duration-300 ease-in-out p-4 rounded"
+              >
+                <div className="item w-full relative">
+                  <div>
+                    <Image
+                      layout="responsive"
+                      height="64"
+                      width="64"
+                      src={track.image || "/images/test.jpeg"}
+                      alt=""
+                    />
                   </div>
                   <div
-                    className="text-sm text-white font-semibold mt-2 whitespace-nowrap overflow-hidden overflow-ellipsis hover:underline cursor-pointer"
+                    className="sub_item w-2/6 absolute bottom-0 right-0 mb-3 mr-3 invisible opacity-0"
                     onClick={() => {
                       play(track.uri, track.offset, 0);
                     }}
                   >
-                    {track.name}
+                    <Image
+                      layout="responsive"
+                      height="64"
+                      width="64"
+                      src="/svgs/play.svg"
+                      alt=""
+                    />
                   </div>
-                  <div className="text-xs text-gray-400 mt-2 font-medium cursor-pointer hover:underline">
-                    {track.artist}
-                  </div>
+                </div>
+                <div
+                  className="text-sm text-white font-semibold mt-2 whitespace-nowrap overflow-hidden overflow-ellipsis hover:underline cursor-pointer"
+                  onClick={() => {
+                    play(track.uri, track.offset, 0);
+                  }}
+                >
+                  {track.name}
+                </div>
+                <div className="text-xs text-gray-400 mt-2 font-medium cursor-pointer hover:underline">
+                  {track.artist}
                 </div>
               </div>
             ))}

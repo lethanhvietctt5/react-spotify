@@ -104,7 +104,7 @@ export default function Category() {
                 </div>
               </Link>
             </div>
-            <div className="text-xs text-gray-400 mt-2 font-medium">
+            <div className="text-xs text-gray-400 mt-2 font-medium overflow-ellipsis overflow-hidden h-12">
               {item.description}
             </div>
           </div>

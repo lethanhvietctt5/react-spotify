@@ -1,13 +1,12 @@
-import { useEffect, useState } from "react";
+import Header from "components/Header";
+import HomeContext from "context";
 import { useAppDispatch, useAppSelector } from "hooks";
-import spotify, { getToken, url_auth } from "spotify";
-import { setToken } from "redux/slices/auth";
-import useRecentlyTracks from "hooks/useRecentlyTracks";
 import useFuturedPlaylists from "hooks/useFuturedPlaylists";
 import useNewRelease from "hooks/useNewRelease";
-import HomeContext from "context";
-import Header from "components/Header";
-import Head from "next/head";
+import useRecentlyTracks from "hooks/useRecentlyTracks";
+import { useEffect } from "react";
+import { setToken } from "redux/slices/auth";
+import spotify, { getToken, url_auth } from "spotify";
 
 type Props = {
   children?: JSX.Element | JSX.Element[];
